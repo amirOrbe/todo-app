@@ -24,6 +24,7 @@ const addTodoItem = () => {
         placeholder="Add a todo"
         aria-label="Todo input"
         aria-describedby="Todo input"
+        @keyup.enter="addTodoItem"
       />
       <div v-if="newTodoItem">
         <button
@@ -47,6 +48,16 @@ export default {
   name: "App",
   components: {
     todoList,
+  },
+  data() {
+    return {
+      todoItems: [],
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("todoItems")) {
+      this.todoItems = JSON.parse(localStorage.getItem("todoItems"));
+    }
   },
 };
 </script>

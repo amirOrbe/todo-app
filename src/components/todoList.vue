@@ -31,9 +31,17 @@
 
 <script>
 export default {
-  name: "TodoLists",
+  name: "TodoList",
   props: {
-    todoItems: Array,
+    todoItems: [],
+  },
+  watch: {
+    todoItems: {
+      handler() {
+        localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
+      },
+      deep: true,
+    },
   },
 };
 </script>
