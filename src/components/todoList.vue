@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <ul class="list-group">
-      <small class="text-danger" v-if="todoItems.length == 0"
+      <small class="text-danger" v-if="todoItems.length === 0"
         >Empty list please add a todo</small
       >
       <li class="list-group-item" v-for="todoItem in todoItems" :key="todoItem">
