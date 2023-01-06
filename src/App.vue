@@ -13,6 +13,23 @@ const addTodoItem = () => {
 </script>
 
 <template>
+  <nav class="navbar navbar-light bg-dark">
+    <a class="navbar-brand text-white px-3" href="/">
+      <img
+        src="../src/assets/logo.png"
+        width="30"
+        height="40"
+        class="d-inline-block align-center"
+        alt=""
+      />
+      Todo List
+    </a>
+    <div class="px-3">
+      <router-link to="/">
+        <button class="btn btn-outline-light">Sign in</button>
+      </router-link>
+    </div>
+  </nav>
   <div class="container p-3">
     <h1 class="display-3">Welcome to your Todo List</h1>
 
