@@ -1,6 +1,6 @@
 <template>
   <nav id="nav" class="navbar navbar-light bg-dark">
-    <a class="navbar-brand text-white px-3" href="/">
+    <router-link class="navbar-brand text-white px-3" to="/">
       <img
         src="../src/assets/logo.png"
         width="50"
@@ -9,9 +9,11 @@
         alt=""
       />
       Todo List
-    </a>
+    </router-link>
     <div class="px-3">
-      <button class="btn btn-outline-light">Sign in</button>
+      <router-link to="/about" class="btn btn-outline-light"
+        >Sign in</router-link
+      >
     </div>
   </nav>
   <div class="container p-3">
@@ -37,6 +39,7 @@
         </button>
       </div>
     </div>
+    <router-view></router-view>
   </div>
   <todoList v-bind:todoItems="todoItems" />
 </template>

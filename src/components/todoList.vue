@@ -1,10 +1,14 @@
 <template>
   <div class="container">
     <ul class="list-group">
-      <small class="text-danger" v-if="todoItems.length === 0"
+      <small class="text-danger" v-if="computedArray.length === 0"
         >Empty list please add a todo</small
       >
-      <li class="list-group-item" v-for="todoItem in todoItems" :key="todoItem">
+      <li
+        class="list-group-item"
+        v-for="todoItem in computedArray"
+        :key="todoItem"
+      >
         <div class="row">
           <div class="col-sm">
             <span class="text-dark">{{ todoItem.id }}</span>
@@ -23,6 +27,14 @@
             <input v-model="todoItem.done" type="checkbox" />
             <label class="form-check-label text-muted"> Mark as Done </label>
           </div>
+          <div class="col-sm">
+            <button
+              @click="deleteTodoItem(todoItem)"
+              class="btn btn-outline-secondary"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </li>
     </ul>
@@ -35,12 +47,23 @@ export default {
   props: {
     todoItems: [],
   },
+  computed: {
+    computedArray() {
+      return this.todoItems;
+    },
+  },
   watch: {
     todoItems: {
       handler() {
         localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
       },
       deep: true,
+    },
+  },
+  methods: {
+    deleteTodoItem(todoItem) {
+      const newList = this.todoItems.filter((item) => item !== todoItem);
+      console.log(newList);
     },
   },
 };
